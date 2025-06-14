@@ -48,7 +48,7 @@
       <div class="about-right fade-in">
         <p>
           Hi, I'm Shibin Saji, an MCA student passionate about crafting interactive, user-friendly websites. I'm proficient in full-stack development, with hands-on experience in modern technologies and frameworks.
-        </p><p></p><p></p><p></p>
+        </p>
         <h3>Educational Qualifications</h3>
         <table class="edu-table">
           <thead>
@@ -74,12 +74,12 @@
               <td>Diploma in Refrigeration and Air-conditioning</td>
               <td>National Council For Vocational Training</td>
             </tr>
-             <tr>
+            <tr>
               <td>2017 - 2019</td>
               <td>Higher Secondary Education</td>
               <td></td>
             </tr>
-             <tr>
+            <tr>
               <td>2017</td>
               <td>SSLC</td>
               <td></td>
@@ -98,7 +98,7 @@
         <img src="./assets/images/project1.jpg" alt="Project 1" class="project-img" />
         <h3>Quiz App</h3>
         <p>A quiz app built with Python and Flask for live competitions.</p>
-        <a href="https:cochindistributors.onrender.com" class="project-btn" target="_blank">View Code</a>
+        <a href="https://cochindistributors.onrender.com" class="project-btn" target="_blank">View Code</a>
       </div>
       <div class="project-card fade-in-delay">
         <img src="./assets/images/project2.jpg" alt="Project 2" class="project-img" />
@@ -113,12 +113,12 @@
   <section id="contact">
     <h2 class="fade-in-delay">Contact Me</h2>
     <div class="contact-container">
-      <form class="contact-form fade-in" onsubmit="handleSubmit(event)">
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
+      <form id="contact-form" class="contact-form fade-in">
+        <input type="text" name="from_name" placeholder="Your Name" required />
+        <input type="email" name="from_email" placeholder="Your Email" required />
         <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
         <button type="submit" class="send-btn">Send Message</button>
-        <p id="confirmation-message"></p>
+        <p id="confirmation-message" style="color: green; margin-top: 10px;"></p>
       </form>
     </div>
   </section>
@@ -130,7 +130,9 @@
   </footer>
 
   <!-- Scripts -->
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <script>
+    // Theme Toggle
     function toggleTheme() {
       const body = document.body;
       const logo = document.getElementById('theme-logo');
@@ -142,16 +144,29 @@
       themeButton.textContent = isDark ? '☀️' : '🌙';
     }
 
+    // Mobile Menu Toggle
     function toggleMenu() {
       document.getElementById('navbar').classList.toggle('open');
     }
 
-    function handleSubmit(event) {
-      event.preventDefault();
-      document.getElementById('confirmation-message').textContent = 'Message sent successfully!';
-      event.target.reset();
-    }
+    // EmailJS Initialization
+    (function () {
+      emailjs.init("BzJ8g5pV7A9REhelo");
+    })();
 
+    // Handle form submission
+    document.getElementById("contact-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      emailjs.sendForm("service_mo8164d", "template_86izocb", this)
+        .then(function () {
+          document.getElementById("confirmation-message").textContent = "✅ Message sent successfully!";
+          document.getElementById("contact-form").reset();
+        }, function (error) {
+          alert("❌ Failed to send message: " + error.text);
+        });
+    });
+
+    // Animation on load
     window.addEventListener('load', () => {
       document.querySelectorAll('.fade-in, .fade-in-delay, .slide-up').forEach(el => {
         el.classList.add('animate-on-load');

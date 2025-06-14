@@ -113,9 +113,9 @@
   <section id="contact">
     <h2 class="fade-in-delay">Contact Me</h2>
     <div class="contact-container">
-      <form id="contact-form" class="contact-form fade-in">
-        <input type="text" name="from_name" placeholder="Your Name" required />
-        <input type="email" name="from_email" placeholder="Your Email" required />
+      <form id="contact-form" action="https://formspree.io/f/mdkzgbyv" method="POST" class="contact-form fade-in">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
         <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
         <button type="submit" class="send-btn">Send Message</button>
         <p id="confirmation-message" style="color: green; margin-top: 10px;"></p>
@@ -130,9 +130,7 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <script>
-    // Theme Toggle
     function toggleTheme() {
       const body = document.body;
       const logo = document.getElementById('theme-logo');
@@ -144,29 +142,32 @@
       themeButton.textContent = isDark ? '☀️' : '🌙';
     }
 
-    // Mobile Menu Toggle
     function toggleMenu() {
       document.getElementById('navbar').classList.toggle('open');
     }
 
-    // EmailJS Initialization
-    (function () {
-      emailjs.init("BzJ8g5pV7A9REhelo");
-    })();
-
-    // Handle form submission
-    document.getElementById("contact-form").addEventListener("submit", function (e) {
+    // Formspree Email Submission
+    document.getElementById("contact-form").addEventListener("submit", function(e) {
       e.preventDefault();
-      emailjs.sendForm("service_mo8164d", "template_86izocb", this)
-        .then(function () {
+      const form = e.target;
+
+      fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        if (response.ok) {
           document.getElementById("confirmation-message").textContent = "✅ Message sent successfully!";
-          document.getElementById("contact-form").reset();
-        }, function (error) {
-          alert("❌ Failed to send message: " + error.text);
-        });
+          form.reset();
+        } else {
+          alert("There was a problem submitting the form.");
+        }
+      }).catch(error => {
+        alert("Something went wrong. Please try again later.");
+      });
     });
 
-    // Animation on load
+    // Animations on load
     window.addEventListener('load', () => {
       document.querySelectorAll('.fade-in, .fade-in-delay, .slide-up').forEach(el => {
         el.classList.add('animate-on-load');
