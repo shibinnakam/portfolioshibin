@@ -36,9 +36,12 @@
   <section id="home" class="home-section">
     <div class="container home-container">
       <div class="home-left slide-up">
-        <h2 class="greeting">Hello <span class="accent-dot">.</span></h2>
-        <h1 class="name-intro">I'm <span class="highlight-name">Shibin</span></h1>
-        <h2 class="role-title">Software Developer</h2>
+        <h2 class="greeting">
+          <span class="decorative-line"></span>
+          Hello <span class="accent-dot">.</span>
+        </h2>
+        <h2 class="name-intro-small">I'm <span class="highlight-name">Shibin</span></h2>
+        <h1 class="role-title-large">Software Developer</h1>
         <div class="home-buttons fade-in-delay">
           <a href="#projects" class="btn btn-primary">Get a project?</a>
           <a href="resume.pdf" class="btn btn-secondary" download>My resume</a>
@@ -66,15 +69,34 @@
 
   <!-- About -->
   <section id="about">
-    <h2 class="fade-in-delay">About Me</h2>
-    <div class="about-container">
-      <div class="about-left slide-up">
-        <img src="./assets/images/profile.jpg" alt="Profile Picture" />
+    <div class="about-grid container">
+      <!-- Left Column: Services -->
+      <div class="about-services slide-up">
+        <div class="service-item">
+          <div class="service-icon">💻</div>
+          <div class="service-text">Website Development</div>
+        </div>
+        <div class="service-item">
+          <div class="service-icon">📱</div>
+          <div class="service-text">App Development</div>
+        </div>
+        <div class="service-item">
+          <div class="service-icon">☁️</div>
+          <div class="service-text">Website Hosting</div>
+        </div>
+
+        <div class="decorative-sidebar-lines">
+          <span></span><span></span><span></span>
+        </div>
       </div>
-      <div class="about-right fade-in">
+
+      <!-- Right Column: Bio & Stats -->
+      <div class="about-bio fade-in">
+        <h2>About me</h2>
         <p>
-          Hi, I'm Shibin Saji, an MCA student passionate about crafting interactive, user-friendly websites. I'm
-          proficient in full-stack development, with hands-on experience in modern technologies and frameworks.
+          I started my software journey from photography. Through that, I learned to love the process of creating from
+          scratch. Since then, this has led me to software development as it fulfills my love for learning and building
+          things.
         </p>
 
         <!-- Stats Section -->
@@ -85,52 +107,58 @@
           </div>
           <div class="stat-item">
             <h3>95%</h3>
-            <p>Client<br>Satisfaction</p>
+            <p>Client<br>satisfaction</p>
           </div>
           <div class="stat-item">
-            <h3>2+</h3>
-            <p>Years of<br>Experience</p>
+            <h3>10+</h3>
+            <p>Years of<br>experience</p>
           </div>
         </div>
-
-        <h3>Educational Qualifications</h3>
-        <table class="edu-table">
-          <thead>
-            <tr>
-              <th>Year</th>
-              <th>Course</th>
-              <th>University</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>2024 - Present</td>
-              <td>MCA</td>
-              <td>APJ Abdhul Kalam Technological University</td>
-            </tr>
-            <tr>
-              <td>2021 - 2024</td>
-              <td>BSc Computer Science</td>
-              <td>Mahatma Gandhi University</td>
-            </tr>
-            <tr>
-              <td>2019 - 2021</td>
-              <td>Diploma in Refrigeration and Air-conditioning</td>
-              <td>National Council For Vocational Training</td>
-            </tr>
-            <tr>
-              <td>2017 - 2019</td>
-              <td>Higher Secondary Education</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>2017</td>
-              <td>SSLC</td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
       </div>
+    </div>
+  </section>
+
+  <!-- Education (Moved after About Grid) -->
+  <section id="education" class="education-section">
+    <div class="container">
+      <h3>Educational Qualifications</h3>
+      <table class="edu-table">
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th>Course</th>
+            <th>University</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2024 - Present</td>
+            <td>MCA</td>
+            <td>APJ Abdhul Kalam Technological University</td>
+          </tr>
+          <tr>
+            <td>2021 - 2024</td>
+            <td>BSc Computer Science</td>
+            <td>Mahatma Gandhi University</td>
+          </tr>
+          <tr>
+            <td>2019 - 2021</td>
+            <td>Diploma in Refrigeration and Air-conditioning</td>
+            <td>National Council For Vocational Training</td>
+          </tr>
+          <tr>
+            <td>2017 - 2019</td>
+            <td>Higher Secondary Education</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>2017</td>
+            <td>SSLC</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     </div>
   </section>
 
